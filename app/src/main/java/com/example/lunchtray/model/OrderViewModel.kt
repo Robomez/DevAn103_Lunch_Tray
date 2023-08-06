@@ -17,10 +17,11 @@ package com.example.lunchtray.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.example.lunchtray.data.DataSource
 import java.text.NumberFormat
+import java.util.Locale
 
 class OrderViewModel : ViewModel() {
 
@@ -49,20 +50,20 @@ class OrderViewModel : ViewModel() {
 
     // Subtotal for the order
     private val _subtotal = MutableLiveData(0.0)
-    val subtotal: LiveData<String> = Transformations.map(_subtotal) {
-        NumberFormat.getCurrencyInstance().format(it)
+    val subtotal: LiveData<String> = _subtotal.map {
+        NumberFormat.getCurrencyInstance(Locale.US).format(_subtotal.value)
     }
 
     // Total cost of the order
     private val _total = MutableLiveData(0.0)
-    val total: LiveData<String> = Transformations.map(_total) {
-        NumberFormat.getCurrencyInstance().format(it)
+    val total: LiveData<String> = _total.map {
+        NumberFormat.getCurrencyInstance(Locale.US).format(it)
     }
 
     // Tax for the order
     private val _tax = MutableLiveData(0.0)
-    val tax: LiveData<String> = Transformations.map(_tax) {
-        NumberFormat.getCurrencyInstance().format(it)
+    val tax: LiveData<String> = _tax.map {
+        NumberFormat.getCurrencyInstance(Locale.US).format(it)
     }
 
     /**
