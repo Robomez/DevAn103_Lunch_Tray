@@ -51,13 +51,13 @@ class OrderViewModel : ViewModel() {
 	// Subtotal for the order
 	private val _subtotal = MutableLiveData(0.0)
 	val subtotal: LiveData<String> = _subtotal.map {
-		NumberFormat.getCurrencyInstance(Locale.US).format(_subtotal.value)
+		NumberFormat.getCurrencyInstance(Locale.US).format(it)
 	}
 
 	// Total cost of the order
 	private val _total = MutableLiveData(0.0)
 	val total: LiveData<String> = _total.map {
-		NumberFormat.getCurrencyInstance(Locale.US).format(it).toString()
+		NumberFormat.getCurrencyInstance(Locale.US).format(it)
 	}
 
 	// Tax for the order
