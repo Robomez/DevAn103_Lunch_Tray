@@ -1,6 +1,8 @@
 Lunch Tray - Starter Code
 ==================================
 
+<img src = "demo.gif" width = 30%>
+
 Starter code for the third independent project for Android Basics in Kotlin
 
 Introduction
